@@ -9,7 +9,7 @@ foreach ($_SESSION['fruits'] as $fruit) {
     echo "{$fruit} <br>";
 }
 
-$_SESSION ['errorSel']  = "Please select a fruit";
-$_SESSION['errorAdd']  = "Please add a fruit";
-
+$_SESSION ['errorSel'] = "Please select a fruit.";
+$_SESSION['errorAdd'] = "Please enter a fruit to add.";
+$_SESSION['errorDel'] = "Please select a fruit to delete.";
 ?>
