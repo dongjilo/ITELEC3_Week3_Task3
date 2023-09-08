@@ -33,7 +33,7 @@ $fruitSess =  $_SESSION['fruits'];
         <div class="col-md-12">
             <div class="card p-4">
                 <div class="card-body">
-                    <h3 class="card-title">Manage Fruits</h3>
+                    <h2 class="text-center h2 mb-4">Manage Fruits</h2>
                     <form action="<?php $_PHP_SELF ?>" method="post">
                         <div class="form-floating my-2">
                             <select name="selFruits" id="selFruits" class="form-select">
@@ -44,31 +44,23 @@ $fruitSess =  $_SESSION['fruits'];
                                 }
                                 ?>
                             </select>
-                            <label for="selFruits">Select a fruit</label>
+                            <label for="selFruits">Select or Delete a fruit</label>
+                        </div>
+                        <div class="form-group my-3">
+                            <button type="submit" name="selectFruitBtn" class="btn btn-success">Select</button>
+                            <button type="submit" name="deleteFruitBtn" class="btn btn-danger">Delete</button>
                         </div>
                         <div class="form-floating my-2">
                             <input type="text" name="addFruit" id="addFruit" class="form-control" placeholder="Add">
                             <label for="addFruit">Add a fruit</label>
                         </div>
-                        <div class="form-floating my-2">
-                            <select name="delFruits" id="delFruits" class="form-select">
-                                <option value=""></option>
-                                <?php
-                                foreach ($fruitSess as $fruit) {
-                                    echo "<option value='$fruit'>$fruit</option>";
-                                }
-                                ?>
-                            </select>
-                            <label for="delFruits">Delete a fruit</label>
-                        </div>
                         <div class="form-group my-3">
-                            <button type="submit" name="selectFruit" class="btn btn-success">Select</button>
                             <button type="submit" name="addFruitBtn" class="btn btn-primary">Add</button>
-                            <button type="submit" name="deleteFruit" class="btn btn-danger">Delete</button>
+
                         </div>
 
                         <?php
-                        if (isset($_POST['selectFruit'])) {
+                        if (isset($_POST['selectFruitBtn'])) {
                             $fruit = $_POST['selFruits'];
                             if ($fruit <> "") {
                                 echo '<div class="alert alert-success fade show" role="alert">
@@ -109,8 +101,8 @@ $fruitSess =  $_SESSION['fruits'];
                                       </div>';
                             }
                         }
-                        if (isset($_POST['deleteFruit'])) {
-                            $fruit = $_POST['delFruits'];
+                        if (isset($_POST['deleteFruitBtn'])) {
+                            $fruit = $_POST['selFruits'];
                             if ($fruit <> "") {
                                 $_SESSION['delMsg'] = "You have deleted {$fruit}";
                                 if (($key = array_search($fruit, $fruitSess)) !== false) {
